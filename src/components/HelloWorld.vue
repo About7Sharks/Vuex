@@ -8,7 +8,11 @@
       <ul>
         <li v-for="(link,index) in links" v-bind:key="index">
           {{link}}
+            <br>
+  <br>
+
           <button v-on:click="removeLinks(index)" class="rm">Remove</button>
+       <br>
         </li>
       </ul>
     </div>
@@ -87,7 +91,7 @@
 
   .left,
   .right {
-    padding: 30px;
+    padding: 15px;
   }
 
   ul {
@@ -98,7 +102,7 @@
   ul li {
     padding: 20px;
     background: white;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .right {
@@ -116,7 +120,7 @@
   }
 
   .rm {
-    float: right;
+    float: left;
     text-transform: uppercase;
     font-size: .8em;
     background: #f9d0e3;
@@ -125,5 +129,10 @@
     color: #ff0076;
     cursor: pointer;
   }
+  @media only screen and (max-width: 600px) {
+    li {
+        font-size: .7em;
+    }
+}
 
 </style>
