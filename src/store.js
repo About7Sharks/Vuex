@@ -8,7 +8,9 @@ export default new Vuex.Store({
       title: 'List',
       links:[
         'http://google.com',
-        'http://bing.com'
+        'http://bing.com',
+        'https://about7sharks.com'
+
       ]
   },
   getters: {

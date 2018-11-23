@@ -1,70 +1,75 @@
 <template>
   <div class="hello">
-   <div class="left">
-     <h1>{{title}}</h1>
-     <form @submit.prevent="addLink">
-       <input type="text" class="link-input" placeholder="Add a Thing" v-model="newLink">
-     </form>
-     <ul>
-       <li v-for="(link,index) in links" v-bind:key="index">
-         {{link}}
-         <button v-on:click="removeLinks(index)" class="rm">Remove</button>
-       </li>
-     </ul>
-   </div>
-   <div class="right">
-     <stats/>
-   </div>
+    <div class="left">
+      <h1>{{title}}</h1>
+      <form @submit.prevent="addLink">
+        <input type="text" class="link-input" placeholder="Add a Thing" v-model="newLink">
+      </form>
+      <ul>
+        <li v-for="(link,index) in links" v-bind:key="index">
+          {{link}}
+          <button v-on:click="removeLinks(index)" class="rm">Remove</button>
+        </li>
+      </ul>
+    </div>
+    <div class="right">
+      <stats />
+    </div>
   </div>
 </template>
 
 <script>
-import stats from '@/components/Stats.vue'
-import { mapState, mapMutations, mapActions } from 'vuex'
-export default {
-  name: 'HelloWorld',
-  data(){
-    return {
-      newLink:''
-    }
-  },
-  components:{
-    stats
-
-  },
-  computed: {
-    ...mapState([
-      'title',
-      'links'
-      ]),
-    //other stuff
-
-
-  },
-  methods:{
-    ...mapMutations([
-      'ADD_LINK'
-    ]),
-    ...mapActions([
-      'removeLink'
-    ]),
-    addLink: function() {
-      this.ADD_LINK(this.newLink)
-      this.newLink=''
+  import stats from '@/components/Stats.vue'
+  import {
+    mapState,
+    mapMutations,
+    mapActions
+  } from 'vuex'
+  export default {
+    name: 'HelloWorld',
+    data() {
+      return {
+        newLink: ''
+      }
     },
-    removeLinks: function(link){
-      this.removeLink(link)
+    components: {
+      stats
+    },
+    computed: {
+      ...mapState([
+        'title',
+        'links'
+      ]),
+      //other stuff
+
+
+    },
+    methods: {
+      ...mapMutations([
+        'ADD_LINK'
+      ]),
+      ...mapActions([
+        'removeLink'
+      ]),
+      addLink: function () {
+        this.ADD_LINK(this.newLink)
+        this.newLink = ''
+      },
+      removeLinks: function (link) {
+        this.removeLink(link)
+      }
     }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style >
-
-  html, #app, .home {
+<style>
+  html,
+  #app,
+  .home {
     height: 100%;
   }
+
   body {
     background-color: #F4F4F4;
     margin: 0;
@@ -80,7 +85,8 @@ export default {
     height: 100%;
   }
 
-  .left, .right {
+  .left,
+  .right {
     padding: 30px;
   }
 
@@ -88,6 +94,7 @@ export default {
     list-style-type: none;
     padding: 0;
   }
+
   ul li {
     padding: 20px;
     background: white;
@@ -99,7 +106,7 @@ export default {
     background-color: #E9E9E9;
   }
 
-  input{
+  input {
     border: none;
     padding: 20px;
     width: calc(100%-40px);
@@ -107,7 +114,8 @@ export default {
     margin-bottom: 50px;
     outline: none;
   }
-  .rm{
+
+  .rm {
     float: right;
     text-transform: uppercase;
     font-size: .8em;
@@ -117,5 +125,5 @@ export default {
     color: #ff0076;
     cursor: pointer;
   }
-</style>
 
+</style>
